@@ -1,3 +1,8 @@
+import os
+import sys
+# Suppress ALSA warnings
+sys.stderr = open(os.devnull, 'w')
+
 import pygame
 import sys
 import random
@@ -9,6 +14,9 @@ from collections import deque, defaultdict
 
 # Initialize pygame
 pygame.init()
+
+# Restore stderr so other errors show normally
+sys.stderr = sys.__stderr__
 
 # Get screen info for fullscreen
 screen_info = pygame.display.Info()
